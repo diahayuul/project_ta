@@ -51,7 +51,7 @@
        
 
           <li class="nav-item">
-            <a href="#" class="nav-link {{ Request::is('peserta*') ? 'active' : '' }}">
+            <a href="#" class="nav-link {{ Request::is('peserta*') ? 'active' : '' }} {{ Request::is('pendaftar*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-users"></i><p> Pendaftar<i class="fas fa-angle-left right"></i></p>
             </a>
             <ul class="nav nav-treeview">

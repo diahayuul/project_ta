@@ -20,7 +20,8 @@
                                     <div class="row g-2 ">
                                         <div class="col-6 mb-3">
                                             <label class="required block text mb-7" >Nama Lengkap</label>
-                                            <input readonly="" class="form-control border-2" id="name" style="background-color: rgb(215, 225, 253);" 
+                                            <input readonly="" class="form-control border-2" id="nama" name="nama" 
+                                            style="background-color: rgb(215, 225, 253);" 
                                             value="{{ auth()->user()->name }}">
                                         </div>
                                       
@@ -48,14 +49,14 @@
 
                                         <div class="col-12 mb-3">
                                             <label class="required block text mb-7" >Pilihan Program Bimbel</label>
-                                            <input readonly="" class="form-control border-2" id="id_program" name="id_program" value="{{ $program->nama }}"
+                                            <input readonly="" class="form-control border-2" id="nama_program" name="nama_program" value="{{ $program->nama }}"
                                             style="background-color: rgb(250, 239, 190);">
                                          </div>
 
                                     <div class="row g-2 ">
                                         <div class="col-6 mb-3">
                                             <label class="required block text mb-7" >Biaya</label>
-                                            <input readonly="" class="form-control border-2" id="id_program" name="id_program" value="Rp. {{ $program->harga }}"
+                                            <input readonly="" class="form-control border-2" id="harga" name="harga" value="Rp. {{ $program->harga }}"
                                             style="background-color: rgb(250, 239, 190);">
                                         </div>
 

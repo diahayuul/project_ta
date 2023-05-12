@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Kategori Program</h1>
+            <h1>Peserta</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -17,11 +17,6 @@
             </ol>
           </div>
         </div>
-        <div class="btn btn-lg bg-danger mt-3 mb-3">
-          <a href="/kategori-program/create">
-          <i class="fa fa-plus"></i> Tambah Kategori
-        </a>
-      </div>
 
       @if(session()->has('success'))
       <div class="alert alert-success" role="alert">
@@ -48,35 +43,31 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th style="width: 100px">No.</th>
-                      <th>Nama Kategori</th>
-                      
+                      <th style="width: 10px">No.</th>
+                      <th>Nama</th>
+                      <th>Email</th>
+                      <th>No Telp</th>
+                      <th>Alamat</th>
+                      <th>Program</th>
+                      <th>Harga</th>
                       <th style="width: 200px">Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($kat_program as $kategori)
+                  
                     <tr>
-                      <td>{{ $loop->iteration }}</td>
-                      <td>{{ $kategori->nama_kategori }}</td>
-                      
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
+                      <td> </td>
                       <td>
-                        <a href="/kategori-program/{{ $kategori->id }}" class="btn bg-primary"> 
-                          <span class="fas fa-eye"></span>
-                        </a>
-                        <a href="/kategori-program/{{ $kategori->id }}/edit" class="btn bg-warning">
-                          <span class="fas fa-edit"></span> 
-                        </a>
-                        <form action="/kategori-program/{{ $kategori->id }}" method="post" class="d-inline">
-                          @method('delete')
-                          @csrf
-                        <button class="btn bg-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">
-                          <span class="fas fa-trash"></span> 
-                        </button>
-                      </form>
+                        
                       </td>
                     </tr>
-                    @endforeach
+                   
 
                   </tbody>
                 </table>

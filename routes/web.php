@@ -5,11 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TentorController;
+use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FasilitasController;
+use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PendaftaranController;
@@ -66,6 +68,10 @@ Route::resource('/testimoni', TestimoniController::class)->middleware('is_admin'
 Route::resource('/kategori-program', KategoriProgramController::class)->middleware('is_admin');
 
 Route::resource('/program', ProgramController::class)->middleware('is_admin');
+
+Route::resource('/pendaftar', PendaftarController::class)->middleware('is_admin');
+
+Route::resource('/peserta', PesertaController::class)->middleware('is_admin');
 
 
 

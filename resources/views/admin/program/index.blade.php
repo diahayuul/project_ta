@@ -46,10 +46,10 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>No.</th>
-                      <th>Nama Program </th>
+                      <th style="width: 10px">No.</th>
+                      <th style="width: 300px">Nama Program </th>
                       <th>Kategori </th>
-                      <th>Deskripsi</th>
+                      <th>Harga</th>
                       <th style="width: 200px">Action</th>
                     </tr>
                   </thead>
@@ -59,7 +59,7 @@
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $program->nama }}</td>
                       <td>{{ $program->kategori_program->nama_kategori }}</td>
-                      <td>{!! $program->deskripsi !!}</td>
+                      <td>{{ $program->harga }}</td>
                       <td>
                         <a href="/program/{{ $program->id }}" class="btn bg-primary"> 
                           <span class="fas fa-eye"></span>

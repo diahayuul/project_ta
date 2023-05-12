@@ -39,5 +39,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function pendaftar()
+    {
+        return $this->hasOne(Pendaftar::class, 'id_user', 'id');
+    }
     
 }

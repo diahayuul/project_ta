@@ -10,4 +10,9 @@ class Pendaftar extends Model
     use HasFactory;
     protected $table = 'pendaftar';
     protected $guarded = ['id'];
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id_user');
+    }
 }

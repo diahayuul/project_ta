@@ -80,7 +80,7 @@
       
                       <hr>
       
-                      <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+                      <strong><i class="fas fa-pencil-alt mr-1"></i> Program yang diikuti</strong>
       
                       <p class="text-muted">
                         <span class="tag tag-danger">UI Design</span>
@@ -90,12 +90,7 @@
                         <span class="tag tag-primary">Node.js</span>
                       </p>
       
-                      <hr>
-      
-                      <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-      
-                      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-                    </div>
+                     
                     <!-- /.card-body -->
                   </div>
             </div>
