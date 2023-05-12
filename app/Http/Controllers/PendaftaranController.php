@@ -14,34 +14,36 @@ class PendaftaranController extends Controller
         $kategoriprogram = KategoriProgram::all();
         $program = Program::all()->where('id', $program->id)->first();
 
-        return view('pendaftaran', compact('kategoriprogram', 'program' ), [
-
-        ]);
+        return view('pendaftaran', compact('kategoriprogram', 'program' ), []);
     }
     public function store(Request $request, Program $program)
     {
-        $validatedData = $request->validate([
-            'nama' => 'required',
-            'email' => 'required',
-            'no_telp' => 'required',
-            'asal_sekolah' => 'required',
-            'alamat' => 'required',
-            'nama_program' => 'required',
-            'harga' => 'required',
-            'jenis_pembayaran'=>'required',
-            
-        ]);
+        try {
+            $validatedData = $request->validate([
+                'nama' => 'required',
+                'email' => 'required',
+                'no_telp' => 'required',
+                'asal_sekolah' => 'required',
+                'alamat' => 'required',
+                'nama_program' => 'required',
+                'harga' => 'required',
+                'jenis_pembayaran'=>'required',            
+            ]);
 
-        // $validatedData['id_user'] = auth()->user()->id;
-        // $validatedData['asal_sekolah'] = $request;
-        // $validatedData['alamat'] = $request;
-        // $validatedData['jenis_pembayaran'] = $request;
-        // $validatedData['id_program'] = Program::all()->where('id', $program->id)->first();
+            $data = new Pendaftar;
+            $data->id_user = $request->id_user;
+            $data->asal_sekolah = $request->asal_sekolah;
+            $data->alamat = $request->alamat;
+            $data->id_program = $request->id_program;
+            $data->jenis_pembayaran = $request->jenis_pembayaran;
+            $data->is_active = 1;
+            $data->save();
 
-        dd($request->all());
-
-        Pendaftar::create($validatedData);
-        return redirect('/bimbel/program/pembayaran');
+            return redirect('/bimbel/program/pembayaran');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+        
         
     }
 

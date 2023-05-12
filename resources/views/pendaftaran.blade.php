@@ -14,10 +14,14 @@
                         <div class="col-lg-8 wow fadeIn " data-wow-delay="0.1s">
                             <div class="h-100 d-flex flex-column p-5 ">
                               <h3 class="mb-4 text-center">Pendaftaran Bimbel Giri Education Training</h3>
+                              <code>{{auth()->user()}}</code>
                                 <form action="/bimbel/program/{{ $program->id }}/pendaftaran" method="post">
                                     @csrf
                                     @auth
                                     <div class="row g-2 ">
+                                        <input type="hidden" name="id_user" value="{{auth()->user()->id}}"/>
+                                        <input type="hidden" name="id_program" value="{{ $program->id}}"/>
+                                    
                                         <div class="col-6 mb-3">
                                             <label class="required block text mb-7" >Nama Lengkap</label>
                                             <input readonly="" class="form-control border-2" id="nama" name="nama" 
