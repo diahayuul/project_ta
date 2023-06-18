@@ -15,7 +15,7 @@ class FasilitasController extends Controller
     public function index()
     {
         return view('admin.fasilitas.index', [
-            'fasilitass' => Fasilitas::all()
+            'fasilitass' => Fasilitas::paginate(5)->withQueryString()
         ]);
     }
 

@@ -16,7 +16,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="classes-item">
                             <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                                <img class="img-fluid rounded-circle" src="{{ asset('img/classes-2.jpg') }}" alt="">
+                                <img class="img-fluid rounded-circle" src="{{ asset('storage/'. $prgrm->gambar) }}" alt="" style="height: 220px">
                             </div>
                             <div class="bg-light rounded p-4 pt-5 mt-n5">
                                 <a class="d-block text-center h3 mt-3 mb-4" href="">{{ $prgrm->nama }}</a>

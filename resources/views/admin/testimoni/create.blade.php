@@ -13,7 +13,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">General Form</li>
+            <li class="breadcrumb-item active">Tambah Testimoni</li>
           </ol>
         </div>
       </div>
@@ -39,9 +39,8 @@
 
                 <div class="form-group col-md-8">
                   <label for="foto" class="form-label">Foto</label>
-                  <img class="img-preview img-fluid mb-3 col-sm-6">
                   <input type="file" class="form-control @error('foto') is-invalid @enderror" 
-                  style="padding: 0" id="foto" name="foto" required onchange="previewImage()">
+                  style="padding: 0" id="foto" name="foto"  >
                   @error('foto')
                   <div class="invalid-feedback">
                       {{ $message }}
@@ -51,7 +50,7 @@
 
                 <div class="form-group col-md-8">
                   <label for="nama">Nama</label>
-                  <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Nama" 
+                  <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Nama Peserta" 
                   name="nama" required value="{{ old('nama') }}">
                   @error('nama')
                   <div class="invalid-feedback">
@@ -73,9 +72,9 @@
 
                 <div class="form-group col-md-8">
                   <label for="sekolah">Asal Sekolah</label>
-                  <input type="text" class="form-control @error('sekolah') is-invalid @enderror" id="sekolah" placeholder="Asal Sekolah" 
-                  name="sekolah" required value="{{ old('sekolah') }}">
-                  @error('sekolah')
+                  <input type="text" class="form-control @error('asal_sekolah') is-invalid @enderror" id="asal_sekolah" placeholder="Asal Sekolah" 
+                  name="asal_sekolah" required value="{{ old('asal_sekolah') }}">
+                  @error('asal_sekolah')
                   <div class="invalid-feedback">
                       {{ $message }}
                   </div>
@@ -110,21 +109,5 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<script>
-  
-  function previewImage() {
-    const image = document.querySelector('#foto');
-    const imgPreview = document.querySelector('.img-preview');
 
-    imgPreview.style.display = 'block';
-
-    const oFReader = new FileReader();
-    oFReader.readAsDataURL(image.files[0]);
-
-    oFReader.onload = function(oFREvent){
-      imgPreview.src = oFREvent.targrt.result;
-    }
-  }
-  
-</script>
 @endsection

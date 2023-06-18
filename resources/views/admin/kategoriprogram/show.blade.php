@@ -12,8 +12,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Simple Tables</li>
+              <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+              <li class="breadcrumb-item active">Detail Kategori</li>
             </ol>
           </div>
         </div>
@@ -39,12 +39,13 @@
                 <table class="table table-bordered">
                   <tbody>
                     <tr> 
-                        <th style="width: 200px">Gambar</th>
-                        <td> 
-                          <span><img class="img-fluid" src="" alt="" style="width: 150px"> 
-                        </span>
-                    </td>
-                    </tr>
+                      <th style="width: 50px">Gambar</th>
+                      <td> 
+                        <span><img class="img-fluid" src="{{ asset('storage/'. $kategori->gambar) }}" alt="" style="width: 150px"> 
+                      </span>
+                  </td>
+                  </tr>
+
 
                     <tr> 
                       <th>Nama Kategori</th>
@@ -53,7 +54,7 @@
 
                     <tr>
                       <th>Deskripsi</th>
-                      <td><span> {{ $kategori->deskripsi }} </span></td>
+                      <td><span> {!! $kategori->deskripsi !!} </span></td>
                     </tr>
 
 

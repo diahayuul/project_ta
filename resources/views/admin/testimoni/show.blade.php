@@ -12,8 +12,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Simple Tables</li>
+              <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+              <li class="breadcrumb-item active">Detail Testimoni</li>
             </ol>
           </div>
         </div>
@@ -41,7 +41,12 @@
                     <tr> 
                         <th width="150">Foto</th>
                         <td> 
-                          <span><img class="img-fluid" src="{{ asset('storage/'. $testimoni->foto) }}" alt="" style="width: 150px"> 
+                          <span>
+                            @if ($testimoni->foto)
+                               <img class="img-fluid" src="{{ asset('storage/'. $testimoni->foto) }}" alt="" style="width: 150px"> 
+                            @else
+                            <img class="img-fluid" src="{{ asset('img/profile-image.jpg') }}" alt="" style="width: 150px">
+                            @endif 
                         </span>
                     </td>
                     </tr>
@@ -58,7 +63,7 @@
 
                     <tr>
                       <th>Asal Sekolah</th>
-                      <td><span> {{ $testimoni->sekolah }} </span></td>
+                      <td><span> {{ $testimoni->asal_sekolah }} </span></td>
                     </tr>
                     <tr>
                       <th>Deskripsi</th>

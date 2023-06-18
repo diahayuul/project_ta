@@ -15,4 +15,10 @@ class Program extends Model
         return $this->belongsTo(KategoriProgram::class, 'kategori_id');
     }
 
+    public function pendaftar()
+    {
+        return $this->hasOne(Pendaftar::class, 'id_program', 'id');
+    }
+    
+
 }

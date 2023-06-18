@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Testimoni;
+use App\Models\Pendaftar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class TestimoniController extends Controller
 {
@@ -16,7 +18,7 @@ class TestimoniController extends Controller
     public function index()
     {
         return view('admin.testimoni.index', [
-            'testimoni' => Testimoni::all()
+            'testimoni' => Testimoni::paginate(8)->withQueryString()
         ]);
     }
 
@@ -27,7 +29,10 @@ class TestimoniController extends Controller
      */
     public function create()
     {
-        return view('admin.testimoni.create');
+        $pendaftars = Pendaftar::all();
+        return view('admin.testimoni.create', [
+            'pendaftars' => $pendaftars
+        ]);
     }
 
     /**
@@ -40,14 +45,16 @@ class TestimoniController extends Controller
     {
         $validatedData = $request->validate([
             'foto'=> 'image|file|max:2000',
-            'nama' => 'required|max:255',
+            'nama' => 'required',
+            'asal_sekolah' => 'required',
             'prestasi' => 'required|max:255',
-            'sekolah' => 'required|max:255',
             'deskripsi' => 'required|max:300',
 
         ]);
-
-        $validatedData['foto'] = $request->file('foto')->store('testimoni-image');
+        if($request->file('foto')){
+             $validatedData['foto'] = $request->file('foto')->store('testimoni-image');
+        }
+       
         Testimoni::create($validatedData);
         return redirect('/testimoni')->with('success', 'Data Berhasil Ditambahkan');
     }
@@ -94,7 +101,7 @@ class TestimoniController extends Controller
             'foto'=> 'image|file|max:2000',
             'nama' => 'required|max:255',
             'prestasi' => 'required|max:255',
-            'sekolah' => 'required|max:255',
+            'asal_sekolah' => 'required|max:255',
             'deskripsi' => 'required|max:300',
 
         ];
@@ -103,7 +110,10 @@ class TestimoniController extends Controller
         if($request->oldImage){
             Storage::delete($request->oldImage);
         }
-        $validatedData['foto'] = $request->file('foto')->store('testimoni-image');
+        
+        if($request->file('foto')){
+            $validatedData['foto'] = $request->file('foto')->store('testimoni-image');
+       }
         
         Testimoni::where('id', $id)
                     ->update($validatedData);
@@ -116,8 +126,9 @@ class TestimoniController extends Controller
      * @param  \App\Models\Testimoni  $testimoni
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Testimoni $testimoni)
+    public function destroy($Idtestimoni)
     {
+        dd($Idtestimoni);
         if($testimoni->foto){
             Storage::delete($testimoni->foto);
         }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pendaftar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PendaftarController extends Controller
 {
@@ -12,64 +13,30 @@ class PendaftarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    private $pendaftar;
+    
+    public function __construct(Pendaftar $pendaftar)
+    {
+        $this->pendaftar = $pendaftar;
+    }
+
     public function index()
     {
-        return view('admin.pendaftar.index');
+        $pendaftars = $this->pendaftar->allData();
+
+        return view('admin.pendaftar.index', compact('pendaftars',
+    ));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function update(Pendaftar $pendaftar)
     {
-        //
-    }
+        // $pendaftars = Pendaftar::all()->where('id', $pendaftar->id)->first();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pendaftar  $pendaftar
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pendaftar $pendaftar)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Pendaftar  $pendaftar
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Pendaftar $pendaftar)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pendaftar  $pendaftar
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Pendaftar $pendaftar)
-    {
-        //
+        Pendaftar::where('id', $pendaftar->id)
+            ->where('status', $pendaftar->status)
+            ->update(['status'=>'Sudah Diverifikasi']);
+        return redirect('/pendaftar');
     }
 
     /**

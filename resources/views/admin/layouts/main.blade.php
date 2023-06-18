@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LBB GET | Dashboard</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>LBB GET | Admin</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -27,6 +28,9 @@
   <link rel="stylesheet" href="{{ asset('template/plugins/summernote/summernote-bs4.min.css') }}">
 
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+  
+  <link rel="stylesheet" href="{{ asset('template/plugins/ijabocroptool/ijaboCropTool.min.css') }}">
+  
   <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
 
     <style>
@@ -74,7 +78,7 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
-
+<script src="{{ asset('template/plugins/ijabocroptool/ijaboCropTool.min.js') }}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset ('template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- ChartJS -->
@@ -98,13 +102,51 @@
 <!-- AdminLTE App -->
 <script src="{{ asset ('template/dist/js/adminlte.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{ asset ('template/dist/js/demo.js') }}"></script>
+{{-- <script src="{{ asset ('template/dist/js/demo.js') }}"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset ('template/dist/js/pages/dashboard.js') }}"></script>
+{{-- <script src="{{ asset ('template/dist/js/pages/dashboard.js') }}"></script> --}}
 <script>
   document.addEventlistener('trix-file-accept', function(e) {
     e.preventDefault();
   })
+</script>
+<script>
+
+  $.ajaxSetup({
+    headers:{
+      'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+    }
+    
+  });
+  $(function(){
+    $('#AdminForm').on('submit', function(e))
+        e.preventDefault();
+
+        $.ajax({
+          url:$(this).attr('action'),
+          method:$(this).attr('method'),
+          data:new FormData(this),
+          processData:false,
+          dataType:'json',
+          contentType:false,
+          beforeSend:function(){
+            $(document).find('span.error-text').text('');
+          },
+          success:function(data){
+            if(data.status == 0){
+              $.each(data.error, function(prefix, vol){
+                $('span.'+prefix+'_error').text(val[0]);
+              });
+            }else {
+              $('AdminForm')[0].reset();
+              alert(data.msg);
+            }
+          }
+    });
+  });
+
+  
+});
 </script>
 </body>
 </html>

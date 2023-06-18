@@ -12,8 +12,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">General Form</li>
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item active">Edit Tentor</li>
           </ol>
         </div>
       </div>
@@ -41,12 +41,6 @@
                 <div class="form-group col-md-8">
                   <label for="foto" class="form-label">Foto</label>
                   <input type="hidden" name="oldImage" value="{{ $tentor->foto }}">
-                  @if ($tentor->foto)
-                    <img src="{{ asset('storage/'. $tentor->foto) }}" class="img-preview img-fluid mb-3 d-block" width="200px">
-                  @else
-                    <img class="img-preview img-fluid mb-3 d-block" width="200px">
-                  @endif
-                  
                   <input type="file" class="form-control @error('foto') is-invalid @enderror" 
                   style="padding: 0" id="foto" name="foto" required onchange="previewImage()">
                   @error('foto')

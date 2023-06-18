@@ -17,7 +17,7 @@ class TentorController extends Controller
     public function index()
     {
         return view('admin.tentor.index', [
-            'tentor' => Tentor::all()
+            'tentor' => Tentor::paginate(8)->withQueryString()
         ]);
     }
 

@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Testimoni</h1>
+            <h1> Testimoni</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Simple Tables</li>
+              <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+              <li class="breadcrumb-item active">Testimoni</li>
             </ol>
           </div>
         </div>
@@ -49,7 +49,6 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">No.</th>
-                      <th>Foto</th>
                       <th style="width: 200px">Nama</th>
                       <th>Prestasi</th>
                       <th>Asal Sekolah</th>
@@ -60,10 +59,9 @@
                     @foreach ($testimoni as $testi)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td><img class="img-fluid" src="{{ asset('storage/'. $testi->foto) }}"  width="100px" ></td>
                       <td>{{ $testi->nama }}</td>
                       <td>{{ $testi->prestasi }}</td>
-                      <td>{{ $testi->sekolah }}</td>
+                      <td>{{ $testi->asal_sekolah }}</td>
                       <td>
                         <a href="/testimoni/{{ $testi->id }}" class="btn bg-primary"> 
                           <span class="fas fa-eye"></span>
@@ -86,14 +84,9 @@
               </div>
               <!-- /.card-body -->
               
-              <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                </ul>
+              <div class="d-flex justify-content-end mt-3 mx-3">
+                {{ $testimoni->links() }}
+
               </div>
             </div>
             <!-- /.card -->

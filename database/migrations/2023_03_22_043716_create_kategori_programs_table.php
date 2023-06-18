@@ -17,6 +17,7 @@ class CreateKategoriProgramsTable extends Migration
             $table->id();
             $table->string('nama_kategori')->unique();
             $table->text('deskripsi');
+            $table->longText('gambar')->nullable();
             $table->timestamps();
         });
     }

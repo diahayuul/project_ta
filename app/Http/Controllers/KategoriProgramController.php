@@ -16,7 +16,7 @@ class KategoriProgramController extends Controller
     public function index()
     {
         return view('admin.kategoriprogram.index', [
-            'kat_program' => KategoriProgram::all()
+            'kat_program' => KategoriProgram::paginate(5)->withQueryString()
         ]);
     }
 
@@ -43,7 +43,7 @@ class KategoriProgramController extends Controller
             'deskripsi' => 'required|max:300',
         ]);
 
-        // $validatedData['foto'] = $request->file('foto')->store('kategori-image');
+        $validatedData['gambar'] = $request->file('gambar')->store('kategori-image');
         KategoriProgram::create($validatedData);
         return redirect('/kategori-program')->with('success', 'Data Berhasil Ditambahkan');
     }
@@ -93,10 +93,10 @@ class KategoriProgramController extends Controller
         
         $validatedData = $request->validate($rules);
 
-        // if($request->oldImage){
-        //     Storage::delete($request->oldImage);
-        // }
-        // $validatedData['foto'] = $request->file('foto')->store('kategori-image');
+        if($request->oldImage){
+            Storage::delete($request->oldImage);
+        }
+        $validatedData['gambar'] = $request->file('gambar')->store('kategori-image');
         
         KategoriProgram::where('id', $id)
                     ->update($validatedData);
@@ -111,10 +111,13 @@ class KategoriProgramController extends Controller
      */
     public function destroy($id)
     {
+        $kategori = KategoriProgram::find($id);
         // if($kategori->foto){
         //     Storage::delete($tentor->foto);
         // }
         KategoriProgram::destroy('id', $id);
+        $kategori->program()->delete();
+
         return redirect('/kategori-program')->with('success', 'Data Berhasil Dihapus');
     }
 }

@@ -12,10 +12,18 @@ class PesertaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $pendaftar;
+    
+    public function __construct(Pendaftar $pendaftar)
+    {
+        $this->pendaftar = $pendaftar;
+    }
+
     public function index()
     {
-        return view('admin.peserta.index');
+        $pendaftars = $this->pendaftar->allData()->where('status', 'Sudah Diverifikasi');
         
+        return view('admin.peserta.index', compact('pendaftars'));
     }
 
     /**
@@ -79,8 +87,9 @@ class PesertaController extends Controller
      * @param  \App\Models\Pendaftar  $pendaftar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pendaftar $pendaftar)
+    public function destroy($id)
     {
-        //
+        Pendaftar::destroy('id', $id);
+        return redirect('/pendaftar')->with('success', 'Data Berhasil Dihapus');
     }
 }

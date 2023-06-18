@@ -56,7 +56,13 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-Route::resource('/profile', ProfileController::class)->middleware('auth');
+
+Route::get('/profile', [ProfileController::class, 'edit'])->middleware('auth');
+Route::post('/profile/edit', [ProfileController::class, 'update'])->middleware('auth');
+Route::post('/profile/update-image', [ProfileController::class, 'update_image'])->middleware('auth');
+
+Route::get('/profile-peserta', [ProfileController::class, 'edit'])->middleware('auth');
+
 
 
 Route::resource('/fasilitas', FasilitasController::class)->middleware('is_admin');

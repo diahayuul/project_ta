@@ -13,7 +13,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Simple Tables</li>
+              <li class="breadcrumb-item active">Verifikasi Pendaftar</li>
             </ol>
           </div>
         </div>
@@ -45,44 +45,49 @@
                     <tr>
                       <th style="width: 10px">No.</th>
                       <th>Nama</th>
-                      <th>Email</th>
-                      <th>No Telp</th>
-                      <th>Alamat</th>
                       <th>Program</th>
                       <th>Harga</th>
+                      <th>Metode Pembayaran</th>
+                      
                       <th style="width: 200px">Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    
-                    <tr>
-                      <td> </td>
-                      <td> </td>
-                      <td> </td>
-                      <td> </td>
-                      <td> </td>
-                      <td> </td>
-                      <td> </td>
-                      <td>
-                        
+                    @foreach ($pendaftars as $pendaftar)
 
+                    <tr>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $pendaftar->name }} </td>
+                      <td>{{ $pendaftar->nama }} </td>
+                      <td>{{ $pendaftar->harga }}</td>
+                      <td>{{ $pendaftar->jenis_pembayaran }}</td>
+                      
+                      <td> 
+                        @if ($pendaftar->status=='Belum Diverifikasi') 
+                       
+                        <form action="/pendaftar/{{ $pendaftar->id }}" method="post" class="d-inline">
+                          @method('put')
+                          @csrf
+                        <button class="btn bg-success" onclick="return confirm('Anda yakin ingin melakukan verifikasi?')">
+                          <span>Verifikasi</span> 
+                        </button>
+                      </form>
+                        @else 
+                        <label class="label {{ ($pendaftar->status =='Sudah Diverifikasi') ? 'text-success' : 'text-danger' }}">{{ $pendaftar->status }}</label>
+                        
+                        @endif
                       </td>
                     </tr>
                     
-
+                    @endforeach
                   </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
               
-              <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                </ul>
+              <div class="d-flex justify-content-end mt-3 mx-3">
+                {{-- {{ $pendaftars->links() }} --}}
+
               </div>
             </div>
             <!-- /.card -->

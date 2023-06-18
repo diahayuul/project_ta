@@ -20,13 +20,20 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email:dns',
+            'email' => 'required',
             'password' => 'required'
         ]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+
+            if (Auth::user()->is_admin == TRUE){
+                return redirect()->intended('/dashboard');
+            }
+            else {
+                return redirect()->intended('/profile');
+            }
+            
         }
  
         return back()->with('loginError', 'Login gagal, periksa kembali username dan password Anda');

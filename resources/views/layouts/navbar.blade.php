@@ -21,13 +21,16 @@
           <a href="/contact" class="nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">Contact</a>
       </div>
       
-      @auth
-      <a href="/dashboard" class="btn btn-large btn-danger py-sm-2 px-sm-4 me-2">Dashboard</a>
-      
-      @else  
+    @auth
+        @if(auth()->user()->is_admin)
+        <a href="/dashboard" class="btn btn-large btn-danger py-sm-2 px-sm-4 me-2">Dashboard Admin</a>    
+        @else
+        <a href="/profile" class="btn btn-large btn-danger py-sm-2 px-sm-4 me-2">Dashboard Profile</a>
+        @endif
+    @else 
       <a href="/login" class="btn btn-dark rounded-pill py-sm-2 px-sm-4 me-2">Login</a>
       <a href="/register" class="btn btn-danger rounded-pill py-sm-2 px-sm-4 me-2">Daftar</a>
-      @endauth
+    @endauth
       </div>
 </nav>
 <!-- Navbar End -->

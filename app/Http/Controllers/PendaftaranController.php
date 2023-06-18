@@ -21,7 +21,7 @@ class PendaftaranController extends Controller
         try {
             $validatedData = $request->validate([
                 'nama' => 'required',
-                'email' => 'required',
+                'email' => 'required|unique:users',
                 'no_telp' => 'required',
                 'asal_sekolah' => 'required',
                 'alamat' => 'required',
@@ -36,7 +36,6 @@ class PendaftaranController extends Controller
             $data->alamat = $request->alamat;
             $data->id_program = $request->id_program;
             $data->jenis_pembayaran = $request->jenis_pembayaran;
-            $data->is_active = 1;
             $data->save();
 
             return redirect('/bimbel/program/pembayaran');

@@ -8,11 +8,11 @@
         <div class="container-fluid p-0 mb-5">
             <div class="owl-carousel header-carousel position-relative">
                 <div class="owl-carousel-item position-relative">
-                    <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+                    <img class="img-fluid" src="{{ asset ('img/slider_1.jpg')}}" alt="" style="height:700px; filter:brightness(40%)">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
                         <div class="container">
                             <div class="row justify-content-start">
-                                <div class="col-10 col-lg-8">
+                                <div class="col-10 col-lg-9">
                                     <h1 class="display-2 text-white animated slideInDown mb-4">The Best Education Partner</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">Segera daftarkan putra-putri anda di LBB GET dan nikmati pembelajaran yang berkualitas dengan harga yang terjangkau.</p>
                                     <a href="/about" class="btn btn-danger rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Selengkapnya</a>
@@ -23,12 +23,12 @@
                     </div>
                 </div>
                 <div class="owl-carousel-item position-relative">
-                    <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+                    <img class="img-fluid" src="img/kategori-2.jpg" alt="" style="height:700px; filter:brightness(40%)">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(0, 0, 0, .2);">
                         <div class="container">
                             <div class="row justify-content-start">
-                                <div class="col-10 col-lg-8">
-                                    <h1 class="display-2 text-white animated slideInDown mb-4">Make A Brighter Future For Your Child</h1>
+                                <div class="col-10 col-lg-9">
+                                    <h1 class="display-2 text-white animated slideInDown mb-4">The Best Solution for Learning's Problem</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">Segera daftarkan putra/putri anda di LBB GET dan nikmati pembelajaran yang berkualitas dengan harga yang terjangkau.</p>
                                     <a href="/about" class="btn btn-danger rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Selengkapnya</a>
                                     <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Program Kami</a>
@@ -79,9 +79,9 @@
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         <h1 class="mb-4">Mengapa harus Giri Education Training?</h1>
-                        <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                        <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos, ipsum labore duo duo sit no sea diam. Et dolor et kasd ea. Eirmod diam at dolor est vero nonumy magna.</p>
-                        <div class="row g-4 align-items-center">
+                        <p>Giri Education Training berupaya untuk tetap memberikan kesempatan untuk semua siswa yang ingin 
+                            mengikuti bimbingan belajar dengan harga terjangkau tanpa mengurangi kualitas yang ada.</p> 
+                            <div class="row g-4 align-items-center">
                             <div class="col-sm-6">
                                 <a class="btn btn-danger rounded-pill py-3 px-5" href="/about">Selengkapnya</a>
                             </div>
@@ -90,7 +90,7 @@
                                     <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
                                     <div class="ms-3">
                                         <h6 class="text-danger mb-1">Rachmad</h6>
-                                        <small>CEO & Founder</small>
+                                        <small>Pendiri</small>
                                     </div>
                                 </div>
                             </div>
@@ -99,14 +99,9 @@
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="img/about-1.jpg" alt="">
+                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="img/about1.jpg" style="height:400px" alt="">
                             </div>
-                            <div class="col-6 text-start" style="margin-top: -150px;">
-                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-2.jpg" alt="">
-                            </div>
-                            <div class="col-6 text-end" style="margin-top: -150px;">
-                                <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-3.jpg" alt="">
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -130,10 +125,10 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="classes-item">
                             <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                                <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="">
+                                <img class="img-fluid rounded-circle" src={{ asset('storage/'. $kat_program->gambar) }} alt="" style="height: 220px" >
                             </div>
                             <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                <a class="d-block text-center h3 mt-3 mb-4" href="">{{ $kat_program->nama_kategori }}</a>
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Program {{ $kat_program->nama_kategori }}</a>
                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                     <div class="d-flex align-items-center">
                                         <p>{!! $kat_program->deskripsi !!}</p>
@@ -162,7 +157,7 @@
                     @foreach ($tentor as $tent)
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="team-item position-relative">
-                            <img class="img-fluid rounded-circle w-75" src="{{ asset('storage/' . $tent->foto) }}" alt="">
+                            <img class="img-fluid rounded-circle w-70" src="{{ asset('storage/' . $tent->foto) }}" alt="" style="height: 400px">
                             <div class="team-text">
                                 <h3>{{ $tent->nama }}</h3>
                                 <p>{{ $tent->posisi }}</p>
@@ -194,7 +189,7 @@
                     <div class="testimonial-item bg-light rounded p-5">
                         <p class="fs-5">{!! $testimoni->deskripsi !!}</p>
                         <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg" style="width: 90px; height: 90px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="{{ asset('storage/'. $testimoni->foto) }}" style="width: 90px; height: 90px;">
                             <div class="ps-3">
                                 <h3 class="mb-2">{{ $testimoni->nama }}</h3>
                                 <h6>{{ $testimoni->prestasi }}</h6>

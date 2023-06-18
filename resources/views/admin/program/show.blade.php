@@ -13,7 +13,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Simple Tables</li>
+              <li class="breadcrumb-item active">Detail Program</li>
             </ol>
           </div>
         </div>
@@ -41,7 +41,7 @@
                     <tr> 
                         <th style="width: 200px">Gambar</th>
                         <td> 
-                          <span><img class="img-fluid" src="" alt="" style="width: 150px"> 
+                          <span><img class="img-fluid" src="{{ asset('storage/'. $program->gambar) }}" alt="" style="width: 150px"> 
                         </span>
                     </td>
                     </tr>

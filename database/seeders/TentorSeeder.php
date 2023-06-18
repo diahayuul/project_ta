@@ -15,10 +15,34 @@ class TentorSeeder extends Seeder
     public function run()
     {
         Tentor::create([
-            'nama' => 'Diah Ayu',
-            'posisi' => 'programmer',
-            'linkedin' => 'linkedin.com/in/diahayulst',
-            'instagram' => 'instagram.com/diahayulst'
+            'nama' => 'Rachmad',
+            'posisi' => 'Pendiri',
+            'linkedin' => 'https://www.linkedin.com/home',
+            'instagram' => 'https://www.instagram.com/',
+        ]);
+        Tentor::create([
+            'nama' => 'Raka',
+            'posisi' => 'Tentor Matematika',
+            'linkedin' => 'https://www.linkedin.com/home',
+            'instagram' => 'https://www.instagram.com/',
+        ]);
+        Tentor::create([
+            'nama' => 'Yunita',
+            'posisi' => 'Tentor Bahasa Inggris',
+            'linkedin' => 'https://www.linkedin.com/home',
+            'instagram' => 'https://www.instagram.com/',
+        ]);
+        Tentor::create([
+            'nama' => 'Rachmad',
+            'posisi' => 'Tentor Bahasa Indonesia',
+            'linkedin' => 'https://www.linkedin.com/home',
+            'instagram' => 'https://www.instagram.com/',
+        ]);
+        Tentor::create([
+            'nama' => 'Mulan',
+            'posisi' => 'Tentor IPA',
+            'linkedin' => 'https://www.linkedin.com/home',
+            'instagram' => 'https://www.instagram.com/',
         ]);
     }
 }

@@ -13,7 +13,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">General Form</li>
+            <li class="breadcrumb-item active">Edit Testimoni</li>
           </ol>
         </div>
       </div>
@@ -41,13 +41,9 @@
                 <div class="form-group col-md-8">
                   <label for="foto" class="form-label">Foto</label>
                   <input type="hidden" name="oldImage" value="{{ $testimoni->foto }}">
-                  @if ($testimoni->foto)
-                    <img src="{{ asset('storage/'. $testimoni->foto) }}" class="img-preview img-fluid mb-3 d-block" width="200px">
-                  @else
-                    <img class="img-preview img-fluid mb-3 d-block" width="200px">
-                  @endif
+                  
                   <input type="file" class="form-control @error('foto') is-invalid @enderror" 
-                  style="padding: 0" id="foto" name="foto" required onchange="previewImage()">
+                  style="padding: 0" id="foto" name="foto" >
                   @error('foto')
                   <div class="invalid-feedback">
                       {{ $message }}
@@ -78,10 +74,10 @@
                 </div>
 
                 <div class="form-group col-md-8">
-                  <label for="sekolah">Asal Sekolah</label>
-                  <input type="text" class="form-control @error('sekolah') is-invalid @enderror" id="sekolah" placeholder="Asal Sekolah" 
-                  name="sekolah" required value="{{ old('sekolah', $testimoni->sekolah) }}">
-                  @error('sekolah')
+                  <label for="asal_sekolah">Asal Sekolah</label>
+                  <input type="text" class="form-control @error('asal_sekolah') is-invalid @enderror" id="asal_sekolah" placeholder="Asal Sekolah" 
+                  name="asal_sekolah" required value="{{ old('asal_sekolah', $testimoni->asal_sekolah) }}">
+                  @error('asal_sekolah')
                   <div class="invalid-feedback">
                       {{ $message }}
                   </div>

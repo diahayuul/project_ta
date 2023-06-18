@@ -14,7 +14,7 @@
                         <div class="col-lg-8 wow fadeIn " data-wow-delay="0.1s">
                             <div class="h-100 d-flex flex-column p-5 ">
                               <h3 class="mb-4 text-center">Pendaftaran Bimbel Giri Education Training</h3>
-                              <code>{{auth()->user()}}</code>
+                              
                                 <form action="/bimbel/program/{{ $program->id }}/pendaftaran" method="post">
                                     @csrf
                                     @auth
@@ -67,9 +67,9 @@
                                         <div class="col-6 mb-3">
                                             <label class="required block text mb-7" >Metode Pembayaran</label>
                                             <select class="form-select border-2" name="jenis_pembayaran" id="jenis_pembayaran">
-                                                <option selected>--Pilih Metode Pembayaran--</option>
-                                                <option value="1">Transfer Bank</option>
-                                                <option value="2">Cash/Datang ke Tempat</option>
+                                                <option value="">--Pilih Metode Pembayaran--</option>
+                                                <option value="Transfer Bank">Transfer Bank</option>
+                                                <option value="Cash">Cash/Datang ke Tempat</option>
                                               </select>
                                         </div>
                                     </div>

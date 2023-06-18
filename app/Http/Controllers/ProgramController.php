@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Program;
 use App\Models\KategoriProgram;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProgramController extends Controller
 {
@@ -15,9 +16,9 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $program = Program::all();
+        $programs = Program::paginate(5)->withQueryString();
         return view('admin.program.index', [
-            'program' => $program
+            'programs' => $programs
         ]);
     }
 
@@ -50,7 +51,7 @@ class ProgramController extends Controller
 
         ]);
 
-        // $validatedData['foto'] = $request->file('foto')->store('program-image');
+        $validatedData['gambar'] = $request->file('gambar')->store('program-image');
         Program::create($validatedData);
         return redirect('/program')->with('success', 'Data Berhasil Ditambahkan');
     }
@@ -104,10 +105,10 @@ class ProgramController extends Controller
         
         $validatedData = $request->validate($rules);
 
-        // if($request->oldImage){
-        //     Storage::delete($request->oldImage);
-        // }
-        // $validatedData['foto'] = $request->file('foto')->store('program-image');
+        if($request->oldImage){
+            Storage::delete($request->oldImage);
+        }
+        $validatedData['gambar'] = $request->file('gambar')->store('program-image');
         
         Program::where('id', $program->id)
                     ->update($validatedData);

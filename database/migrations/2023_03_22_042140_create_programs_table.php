@@ -19,7 +19,7 @@ class CreateProgramsTable extends Migration
             $table->string('nama');
             $table->decimal('harga');
             $table->text('deskripsi');
-            $table->longText('foto')->nullable();
+            $table->longText('gambar')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

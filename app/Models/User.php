@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Pendaftar;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -39,9 +41,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function pendaftar()
-    {
+    public function pendaftar(){
         return $this->hasOne(Pendaftar::class, 'id_user', 'id');
     }
     
+    public function program(){
+        return $this->hasOne(Program::class, 'id', 'id');
+    }
+
+
+    public function allData()
+    {
+        return DB::table('users')
+            ->leftJoin('pendaftars', 'users.id', '=', 'pendaftar.id_user')
+            // ->leftJoin('programs', 'pendaftars.id_program', '=', 'programs.id')
+            //->leftJoin('kategori_programs', 'pendaftars.id_kategori', '=', 'kategori_programs.id')
+            ->get();
+    }
 }

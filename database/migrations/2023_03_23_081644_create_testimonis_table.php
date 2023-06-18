@@ -16,10 +16,10 @@ class CreateTestimonisTable extends Migration
         Schema::create('testimonis', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('asal_sekolah');
             $table->string('prestasi')->nullable();
-            $table->string('sekolah');
             $table->text('deskripsi');
-            $table->string('foto')->nullable();
+            $table->longText('foto')->nullable();
             $table->timestamps();
         });
     }

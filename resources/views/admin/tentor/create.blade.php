@@ -12,8 +12,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">General Form</li>
+            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item active">Tambah Tentor</li>
           </ol>
         </div>
       </div>
@@ -41,7 +41,7 @@
                   <label for="foto" class="form-label">Foto</label>
                   <img class="img-preview img-fluid mb-3 col-sm-6">
                   <input type="file" class="form-control @error('foto') is-invalid @enderror" 
-                  style="padding: 0" id="foto" name="foto" required onchange="previewImage()">
+                  style="padding: 0" id="foto" name="foto" required>
                   @error('foto')
                   <div class="invalid-feedback">
                       {{ $message }}

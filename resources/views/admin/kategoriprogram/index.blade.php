@@ -12,8 +12,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Simple Tables</li>
+              <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+              <li class="breadcrumb-item active">Kategori Program</li>
             </ol>
           </div>
         </div>
@@ -55,9 +55,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($kat_program as $kategori)
+                    @foreach ($kat_program as $index => $kategori)
                     <tr>
-                      <td>{{ $loop->iteration }}</td>
+                      <td scope="row">{{ $index + $kat_program->firstItem() }}</td>
                       <td>{{ $kategori->nama_kategori }}</td>
                       
                       <td>
@@ -83,14 +83,9 @@
               </div>
               <!-- /.card-body -->
               
-              <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                </ul>
+              <div class="d-flex justify-content-end mt-3 mx-3">
+                {{ $kat_program->links() }}
+
               </div>
             </div>
             <!-- /.card -->

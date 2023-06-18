@@ -13,7 +13,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Simple Tables</li>
+              <li class="breadcrumb-item active">Profile</li>
             </ol>
           </div>
         </div>
@@ -33,70 +33,96 @@
         <div class="row">
          
           <!-- /.col -->
-          <div class="col-md-4">
+          <div class="col-lg-3">
             <div class="card card-danger card-outline">
                 <div class="card-body box-profile">
                   <div class="text-center">
-                    <img class="img img-fluid img-circle" src="{{ asset ('img/profile-image.jpg') }}" alt="User profile picture">
+                    @if (auth()->user()->foto)
+                    <img class="profile-user-img img-fluid img-circle" src="{{ asset('storage/'. auth()->user()->foto) }}" alt="User profile picture" style="width: 100px;height: 100px"> 
+                 @else
+                 <img class="profile-user-img img-fluid img-circle" src="{{ asset('img/profile-image.jpg') }}" alt="User profile picture"  style="width: 100px;height: 100px">
+                 @endif 
                   </div>
   
                   <h4 class="profile-username text-center mb-3">{{ auth()->user()->name }}</h4>
-  
-  
-                  <ul class="list-group list-group-unbordered mb-2">
-                    <li class="list-group-item">
-                      <b>Email</b> <p class="float-right">{{ auth()->user()->email }}</p>
-                    </li>
-                    <li class="list-group-item">
-                      <b>Nomor Telepon</b> <p class="float-right">{{ auth()->user()->no_telp }}</p>
-                    </li>
-                    
-                  </ul>
-  
-                  <a href="#" class="btn btn-danger btn-block"><b>Edit Profile</b></a>
+
+                  <form class="form-horizontal" method="post" action="/profile/update-image" enctype="multipart/form-data">
+                    @csrf
+                  <div class="col-sm-12">
+                  <input type="file" class="form-control @error('foto') is-invalid @enderror" 
+                  style="padding: 0" id="foto" name="foto" required>
+                  @error('foto')
+                  <div class="invalid-feedback">
+                      {{ $message }}
+                  </div>
+                  @enderror
+                
+                    <button type="submit" class="btn btn-danger btn-block mt-3 ">Upload Foto</button>
                 </div>
+              </div>
+            </form>
                 <!-- /.card-body -->
               </div>
             </div>
 
-              <div class="col-md-8">
-                <div class="card card-danger">
-                    <div class="card-header">
-                      <h3 class="card-title">About Me</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                      <strong><i class="fas fa-book mr-1"></i> Asal Sekolah</strong>
-      
-                      <p class="text-muted">
-                        B.S. in Computer Science from the University of Tennessee at Knoxville
-                      </p>
-      
-                      <hr>
-      
-                      <strong><i class="fas fa-map-marker-alt mr-1"></i> Alamat</strong>
-      
-                      <p class="text-muted">Malibu, California</p>
-      
-                      <hr>
-      
-                      <strong><i class="fas fa-pencil-alt mr-1"></i> Program yang diikuti</strong>
-      
-                      <p class="text-muted">
-                        <span class="tag tag-danger">UI Design</span>
-                        <span class="tag tag-success">Coding</span>
-                        <span class="tag tag-info">Javascript</span>
-                        <span class="tag tag-warning">PHP</span>
-                        <span class="tag tag-primary">Node.js</span>
-                      </p>
-      
-                     
-                    <!-- /.card-body -->
+            <div class="col-lg-9">
+              <div class="card card-danger">
+                  <div class="card-header">
+                    <h3 class="card-title">Personal Information</h3>
                   </div>
-            </div>
-              
-           
-            
+                  <!-- /.card-header -->
+                  <form class="form-horizontal" method="post" action="/profile/edit" id="AdminForm" enctype="multipart/form-data">
+                    @method('post')
+                    @csrf
+                    <div class="card-body">
+                      <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label">Nama</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" 
+                          name="name" value="{{ auth()->user()->name }}" required>
+                          @error('name')
+                          <div class="invalid-feedback">
+                              {{ $message }}
+                          </div>
+                          @enderror
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                          <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" 
+                          name="email" value="{{ auth()->user()->email }}" required>
+                          @error('email')
+                          <div class="invalid-feedback">
+                              {{ $message }}
+                          </div>
+                          @enderror
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">No. Telepon</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control @error('no_telp') is-invalid @enderror" id="no_telp" 
+                          name="no_telp" value="{{ auth()->user()->no_telp }}" required>
+                          @error('no_telp')
+                          <div class="invalid-feedback">
+                              {{ $message }}
+                          </div>
+                          @enderror
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                          <button type="submit" class="btn btn-danger">Simpan Perubahan</button>
+                    </div>
+                    <!-- /.card-body -->
+                    
+                  </form>
+          </div>
          <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
