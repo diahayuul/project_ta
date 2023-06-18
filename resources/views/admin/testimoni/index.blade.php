@@ -72,9 +72,10 @@
                         <form action="/testimoni/{{ $testi->id }}" method="post" class="d-inline">
                           @method('delete')
                           @csrf
-                        <button class="btn bg-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">
+                        <button type="submit" class="btn bg-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">
                           <span class="fas fa-trash"></span> 
                         </button>
+                      </form>
                       </td>
                     </tr>
                     @endforeach

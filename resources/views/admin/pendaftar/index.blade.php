@@ -68,7 +68,7 @@
                         <form action="/pendaftar/{{ $pendaftar->id }}" method="post" class="d-inline">
                           @method('put')
                           @csrf
-                        <button class="btn bg-success" onclick="return confirm('Anda yakin ingin melakukan verifikasi?')">
+                        <button type="submit" class="btn bg-success" onclick="return confirm('Anda yakin ingin melakukan verifikasi?')">
                           <span>Verifikasi</span> 
                         </button>
                       </form>

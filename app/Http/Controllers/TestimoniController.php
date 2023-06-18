@@ -126,9 +126,8 @@ class TestimoniController extends Controller
      * @param  \App\Models\Testimoni  $testimoni
      * @return \Illuminate\Http\Response
      */
-    public function destroy($Idtestimoni)
+    public function destroy(Testimoni $testimoni)
     {
-        dd($Idtestimoni);
         if($testimoni->foto){
             Storage::delete($testimoni->foto);
         }
