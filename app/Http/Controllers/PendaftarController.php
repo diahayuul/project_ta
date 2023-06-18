@@ -24,6 +24,7 @@ class PendaftarController extends Controller
     public function index()
     {
         $pendaftars = $this->pendaftar->allData();
+        // dd($pendaftars);
 
         return view('admin.pendaftar.index', compact('pendaftars',
     ));
@@ -32,10 +33,12 @@ class PendaftarController extends Controller
     public function update(Pendaftar $pendaftar)
     {
         // $pendaftars = Pendaftar::all()->where('id', $pendaftar->id)->first();
-
-        Pendaftar::where('id', $pendaftar->id)
-            ->where('status', $pendaftar->status)
-            ->update(['status'=>'Sudah Diverifikasi']);
+        $pendaftar = Pendaftar::findOrFail($pendaftar->id);
+        $pendaftar->status = 'Sudah Diverifikasi';
+        $pendaftar->save();
+        // Pendaftar::where('id', $pendaftar->id)
+        //     ->where('status', $pendaftar->status)
+        //     ->update(['status'=>'Sudah Diverifikasi']);
         return redirect('/pendaftar');
     }
 

@@ -65,7 +65,7 @@
                       <td> 
                         @if ($pendaftar->status=='Belum Diverifikasi') 
                        
-                        <form action="/pendaftar/{{ $pendaftar->id }}" method="post" class="d-inline">
+                        <form action="/pendaftar/{{ $pendaftar->id_pendaftar }}" method="post" class="d-inline">
                           @method('put')
                           @csrf
                         <button type="submit" class="btn bg-success" onclick="return confirm('Anda yakin ingin melakukan verifikasi?')">
