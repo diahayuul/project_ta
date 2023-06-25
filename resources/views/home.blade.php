@@ -87,7 +87,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
-                                    <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 45px; height: 45px;">
+                                    <img class="rounded-circle flex-shrink-0" src="{{ asset('img/user.jpg') }}" alt="" style="width: 45px; height: 45px;">
                                     <div class="ms-3">
                                         <h6 class="text-danger mb-1">Rachmad</h6>
                                         <small>Pendiri</small>
@@ -99,7 +99,7 @@
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="img/about1.jpg" style="height:400px" alt="">
+                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{{ asset('img/about1.jpg') }}" style="height:400px" alt="">
                             </div>
                             
                         </div>

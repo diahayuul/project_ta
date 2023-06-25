@@ -34,7 +34,7 @@
                     <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="img/img_2.jpg" alt="" style="height: 400px">
+                                <img class="img-fluid w-75 rounded-circle bg-light p-3" src="{{ asset('img/about1.jpg') }}" alt="" style="height: 400px">
                             
                         </div>
                     </div>
