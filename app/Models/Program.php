@@ -17,7 +17,7 @@ class Program extends Model
 
     public function pendaftar()
     {
-        return $this->hasOne(Pendaftar::class, 'id_program', 'id');
+        return $this->hasOne(Pendaftar::class, 'id_program');
     }
     
 

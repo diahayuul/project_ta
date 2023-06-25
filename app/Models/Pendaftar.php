@@ -22,12 +22,6 @@ class Pendaftar extends Model
         return $this->hasOne(Program::class, 'id_program');
     }
 
-    public function kategori()
-    {
-        return $this->hasOne(KategoriProgram::class, 'id', 'id');
-    }
-
-
     public function allData()
     {
         // return DB::table('pendaftars')
@@ -39,6 +33,6 @@ class Pendaftar extends Model
         return DB::table('pendaftars')
             ->leftJoin('users', 'users.id', '=', 'pendaftars.id_user')
             ->leftJoin('programs', 'programs.id', '=', 'pendaftars.id_program')
-            ->get(['pendaftars.id as id_pendaftar', 'users.name', 'programs.nama', 'programs.harga', 'pendaftars.jenis_pembayaran', 'pendaftars.status']);
+            ->get(['pendaftars.id as id_pendaftar', 'users.name', 'users.no_telp', 'users.email', 'users.name', 'programs.nama', 'programs.harga', 'pendaftars.alamat', 'pendaftars.asal_sekolah', 'pendaftars.jenis_pembayaran', 'pendaftars.status']);
     }
 }

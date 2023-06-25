@@ -56,13 +56,13 @@
                     @foreach ($pendaftars as $pendaftar)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $pendaftar->name}} </td>
-                      <td>{{ $pendaftar->no_telp}} </td>
-                      <td>{{ $pendaftar->email}}</td>
+                      <td>{{ $pendaftar->name }} </td>
+                      <td>{{ $pendaftar->no_telp }} </td>
+                      <td>{{ $pendaftar->email }}</td>
                       <td>{{ $pendaftar->alamat }} </td>
-                      <td>{{ $pendaftar->asal_sekolah}}</td>
+                      <td>{{ $pendaftar->asal_sekolah }}</td>
                       <td>
-                        <form action="/peserta/{{ $pendaftar->id }}" method="post" class="d-inline">
+                        <form action="/peserta/{{ $pendaftar->id_pendaftar }}" method="post" class="d-inline">
                           @method('delete')
                           @csrf
                         <button class="btn bg-danger" onclick="return confirm('Anda yakin ingin menghapus data?')">

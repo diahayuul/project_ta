@@ -24,6 +24,7 @@ class PesertaController extends Controller
         $pendaftars = $this->pendaftar->allData()->where('status', 'Sudah Diverifikasi');
         
         return view('admin.peserta.index', compact('pendaftars'));
+        
     }
 
     /**
