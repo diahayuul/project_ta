@@ -43,7 +43,7 @@ Route::get('/bimbel/program/{kategoriprogram:nama_kategori}', [HomeController::c
 Route::get('/bimbel/program/{program:id}/pendaftaran', [PendaftaranController::class, 'index'],)->middleware('auth');
 Route::post('/bimbel/program/{program:id}/pendaftaran', [PendaftaranController::class, 'store'],);
 
-// Route::get('/bimbel/program/pembayaran', [PembayaranController::class, 'index'],);
+Route::get('/bimbel/program/pembayaran', [PembayaranController::class, 'index'],);
 
 
 

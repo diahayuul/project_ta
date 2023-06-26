@@ -21,7 +21,7 @@ class PendaftaranController extends Controller
         try {
             $validatedData = $request->validate([
                 'nama' => 'required',
-                'email' => 'required|unique:users',
+                'email' => 'required',
                 'no_telp' => 'required',
                 'asal_sekolah' => 'required',
                 'alamat' => 'required',
@@ -30,20 +30,18 @@ class PendaftaranController extends Controller
                 'jenis_pembayaran'=>'required',            
             ]);
 
-            $data = new Pendaftar;
-            $data->id_user = $request->id_user;
-            $data->asal_sekolah = $request->asal_sekolah;
-            $data->alamat = $request->alamat;
-            $data->id_program = $request->id_program;
-            $data->jenis_pembayaran = $request->jenis_pembayaran;
+            $data = new Pendaftar();
+            $data->id_user = $request->input('id_user');
+            $data->asal_sekolah = $request->input('asal_sekolah');
+            $data->alamat = $request->input('alamat');
+            $data->id_program = $request->input('id_program');
+            $data->jenis_pembayaran = $request->input('jenis_pembayaran');
             $data->save();
-
             return redirect('/bimbel/program/pembayaran');
         } catch (\Throwable $th) {
+            // dd($th);
             throw $th;
-        }
-        
-        
+        }            
     }
 
 }
